@@ -2,7 +2,7 @@
 //  ExpandableTableViewController.swift
 //
 //  Created by Enric Macias Lopez on 6/25/15.
-//
+//sss
 
 import UIKit
 
@@ -67,14 +67,17 @@ open class ExpandableTableViewController: UITableViewController {
     fileprivate var cellsTypeArray: [ExpandableCellType] = []
     fileprivate var indexedCells: Dictionary<String,UITableViewCell> = [:]
     
-    @IBOutlet open var expandableTableView: ExpandableTableView!
+    open var expandableTableView: ExpandableTableView!
 
+    
+    
     // MARK: - Lifecycle
     
     override open func viewDidLoad() {
         super.viewDidLoad()
-        
-        expandableTableView.parentViewController = self
+        self.expandableTableView = ExpandableTableView(frame: CGRect.zero, style: .plain)
+        view.addSubview(expandableTableView)
+        self.constrainViewEqual(self.view, view: self.expandableTableView)
     }
 
     override open func didReceiveMemoryWarning() {
@@ -327,4 +330,25 @@ open class ExpandableTableViewController: UITableViewController {
             expandableTableView.expandableDelegate.expandableTableView(expandableTableView, didSelectSubRowAtExpandableIndexPath: expandableIndexPath)
         }
     }
+}
+extension UIViewController {
+    
+    
+    
+    func constrainViewEqual(_ holderView: UIView, view: UIView) {
+        view.translatesAutoresizingMaskIntoConstraints = false
+        //pin 100 points from the top of the super
+        let pinTop = NSLayoutConstraint(item: view, attribute: .top, relatedBy: .equal,
+                                        toItem: holderView, attribute: .top, multiplier: 1.0, constant: 0)
+        let pinBottom = NSLayoutConstraint(item: view, attribute: .bottom, relatedBy: .equal,
+                                           toItem: holderView, attribute: .bottom, multiplier: 1.0, constant: 0)
+        let pinLeft = NSLayoutConstraint(item: view, attribute: .left, relatedBy: .equal,
+                                         toItem: holderView, attribute: .left, multiplier: 1.0, constant: 0)
+        let pinRight = NSLayoutConstraint(item: view, attribute: .right, relatedBy: .equal,
+                                          toItem: holderView, attribute: .right, multiplier: 1.0, constant: 0)
+        
+        holderView.addConstraints([pinTop, pinBottom, pinLeft, pinRight])
+    }
+    
+    
 }
