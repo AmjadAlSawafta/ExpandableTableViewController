@@ -11,7 +11,7 @@ Swift library to easily show, hide and customize table view cells as an expandab
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Enric Macias Lopez' => 'enric_maciaslopez@gmail.com' }
-  s.source           = { :git => 'https://github.com/enricmacias/ExpandableTableViewController.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/AmjadAlSawafta/ExpandableTableViewController.git', :tag => '2.2' }
 
   s.ios.deployment_target = '8.0'
 
